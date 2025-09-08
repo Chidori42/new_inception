@@ -45,13 +45,10 @@ wp core install \
     --allow-root
 
 echo "WordPress installed successfully!"
-
-    wp user create "$NEW_USER" "$NEW_USER_EMAIL" \
-        --role="$NEW_USER_ROLE" \
-        --user_pass="$NEW_USER_PASS" \
-        --allow-root
-
-
+wp user create "$NEW_USER" "$NEW_USER_EMAIL" \
+    --role="$NEW_USER_ROLE" \
+    --user_pass="$NEW_USER_PASS" \
+    --allow-root
 wp option update home $WP_URL --allow-root
 wp option update siteurl $WP_URL --allow-root
 
