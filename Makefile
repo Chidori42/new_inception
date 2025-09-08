@@ -24,8 +24,8 @@ down:
 fclean:
 	cd ./srcs && docker-compose down -v --rmi all --remove-orphans
 	docker system prune -af --volumes
-	sudo rm -rf /home/ael-fagr/data/wordpress/*
-	sudo rm -rf /home/ael-fagr/data/mariadb/*
+	rm -rf /home/ael-fagr/data/wordpress/*
+	rm -rf /home/ael-fagr/data/mariadb/*
 
 # View logs
 logs:
