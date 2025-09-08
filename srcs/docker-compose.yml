@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  wordpress:
+    container_name: wordpress
+    build: ./requirements/wordpress
+    image: wordpress:ael-fagr
+    restart: always
+    depends_on:
+      - mariadb
+    networks:
+      - mynetwork
+    env_file:
+      - .env
+    volumes:
+      - wordpress_data:/var/www/wordpress
+
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/mariadb
+    image: mariadb:ael-fagr
+    restart: always
+    env_file:
+      - .env
+    networks:
+      - mynetwork
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  nginx:
+    container_name: nginx
+    build: ./requirements/nginx
+    image: nginx:ael-fagr
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - wordpress
+    ports:
+      - "443:443"
+    networks:
+      - mynetwork
+    volumes:
+      - wordpress_data:/var/www/wordpress
+
+networks:
+  mynetwork:
+    driver: bridge
+
+volumes:
+  mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/ael-fagr/data/mariadb
+      
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/ael-fagr/data/wordpress
