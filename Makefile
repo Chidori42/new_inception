@@ -13,9 +13,6 @@ build:
 up:
 	cd ./srcs && docker-compose up -d
 
-# Start services with build
-start: build up
-
 # Stop services
 down:
 	cd ./srcs && docker-compose down
