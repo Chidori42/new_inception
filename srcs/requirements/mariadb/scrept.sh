@@ -14,6 +14,4 @@ FLUSH PRIVILEGES;
 EOF
 
 echo "✅ Database '${MYSQL_DATABASE}' and user '${MYSQL_USER}' initialized via bootstrap."
-
-# run MariaDB in the foreground (container-safe)
-exec mysqld_safe
+exec  mysqld_safe

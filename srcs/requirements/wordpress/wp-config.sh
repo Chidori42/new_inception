@@ -37,7 +37,7 @@ wp core install \
 wp user create "${NEW_USER}" "${NEW_USER_EMAIL}" \
     --role="${NEW_USER_ROLE}" \
     --user_pass="${NEW_USER_PASS}" \
-    --allow-root 2>/dev/null || true
+    --allow-root 
 
 # Set permissions
 chown -R www-data:www-data /var/www/wordpress
