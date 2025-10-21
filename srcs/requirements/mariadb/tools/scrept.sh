@@ -1,6 +1,4 @@
 #!/bin/bash
-
-# Wait for environment variables
 echo "Starting MariaDB bootstrap setup..."
 
 # Run bootstrap SQL commands directly

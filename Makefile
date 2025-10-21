@@ -1,6 +1,5 @@
 .PHONY: all build up down logs clean fclean re restart status
 
-# Default target
 all: build up
 
 # Create directories and build images
@@ -17,13 +16,6 @@ up:
 down:
 	cd ./srcs && docker-compose down
 
-# Stop and remove everything (volumes, networks, images)
-fclean:
-	cd ./srcs && docker-compose down -v --rmi all --remove-orphans
-	docker system prune -af --volumes
-	rm -rf /home/ael-fagr/data/wordpress/*
-	rm -rf /home/ael-fagr/data/mariadb/*
-
 # View logs
 logs:
 	cd ./srcs && docker-compose logs -f
@@ -34,6 +26,12 @@ clean: down
 	docker network prune -f
 	docker image prune -af
 	docker builder prune -af
+
+# Stop and remove everything 
+fclean: clean
+	cd ./srcs && docker-compose down
+	rm -rf /home/ael-fagr/data/wordpress/*
+	rm -rf /home/ael-fagr/data/mariadb/*
 
 # Restart services
 restart: down up
