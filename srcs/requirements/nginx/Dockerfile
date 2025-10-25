@@ -11,6 +11,6 @@ RUN apt-get update && apt-get upgrade -y && \
     -subj "/C=MA/ST=KHOURIBGA/L=KHOURIBGA/O=1337/OU=1337/CN=ael-fagr.42.fr" 
 
 
-COPY tools/nginx.conf /etc/nginx/nginx.conf
+COPY /tools/nginx.conf /etc/nginx/nginx.conf
 
 CMD ["nginx", "-g", "daemon off;"]

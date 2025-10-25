@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
     && mv wp-cli.phar /usr/local/bin/wp 
 
 # Copy WordPress setup script
-COPY tools/wp-config.sh /usr/local/bin/wp-config.sh
+COPY /tools/wp-config.sh /usr/local/bin/wp-config.sh
 RUN chmod +x /usr/local/bin/wp-config.sh
 
 # Use entrypoint to configure WP before launching php-fpm
