@@ -1,7 +1,6 @@
 #!/bin/bash
 echo "Starting MariaDB bootstrap setup..."
 
-# Run bootstrap SQL commands directly
 mysqld --bootstrap <<EOF
 FLUSH PRIVILEGES;
 ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';
